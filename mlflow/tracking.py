@@ -1,7 +1,9 @@
 import mlflow 
 import mlflow.sklearn
 import logging 
+import os 
 
+os.makedirs("logs", exist_ok = True) 
 # Configure Logging 
 logging.basicConfig(
     filename = "logs/mlflow.log",
