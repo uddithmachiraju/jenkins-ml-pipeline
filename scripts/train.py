@@ -8,6 +8,7 @@ from sklearn.ensemble import RandomForestClassifier
 from imblearn.over_sampling import SMOTE 
 from sklearn.metrics import accuracy_score 
 
+os.makedirs("logs", exist_ok = True)
 # Configure logging
 logging.basicConfig(
     filename = "logs/training.log",

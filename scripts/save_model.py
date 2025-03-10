@@ -3,6 +3,7 @@ import pickle
 import logging 
 import shutil 
 
+os.makedirs("logs", exist_ok = True)
 # Configure logging
 logging.basicConfig(
     filename = "logs/save_model.log",
@@ -34,4 +35,5 @@ def select_best_model(path):
         logging.info(f"Error in saving model {str(e)}") 
     
 if __name__ == "__main__":
+    os.makedirs("models", exist_ok = True)
     select_best_model(path = "models/")

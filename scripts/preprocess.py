@@ -2,6 +2,7 @@ import pandas as pd
 import logging 
 import os 
 
+os.makedirs("logs", exist_ok = True) 
 # Configure Logging
 logging.basicConfig(
     filename = "logs/preprocess.log", 
