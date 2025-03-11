@@ -18,17 +18,22 @@ pipeline {
         }
         stage("Data Preprocessing") {
             steps {
-                sh 'python scripts/preprocess.py'
+                sh 'python3 scripts/preprocess.py'
             }
         }
         stage("Training the model") {
             steps {
-                sh 'python scripts/train.py'
+                sh 'python3 scripts/train.py'
             }
         }
         stage("Select the best model") {
             steps {
-                sh 'python scripts/save_model.py'
+                sh 'python3 scripts/save_model.py'
+            }
+        }
+        stage("Model Deployment"){
+            steps{
+                echo "Deploy Model" 
             }
         }
     }
