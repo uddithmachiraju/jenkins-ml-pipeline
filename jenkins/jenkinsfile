@@ -1,0 +1,37 @@
+pipeline {
+    agent any
+    stages {
+        stage("Cloning into GitHub..") {
+            steps {
+                echo "======== Cloning repository from GitHub ========"
+                git branch: 'main', url: 'https://github.com/uddithmachiraju/jenkins-ml-pipeline.git'
+            }
+        }
+        stage("Data Preprocessing") {
+            steps {
+                sh 'python scripts/preprocess.py'
+            }
+        }
+        stage("Training the model") {
+            steps {
+                sh 'python scripts/train.py'
+            }
+        }
+        stage("Select the best model") {
+            steps {
+                sh 'python scripts/save_model.py'
+            }
+        }
+    }
+    post {
+        always {
+            echo "======== Pipeline Execution Completed ========"
+        }
+        success {
+            echo "======== Pipeline executed successfully ========"
+        }
+        failure {
+            echo "======== Pipeline execution failed ========"
+        }
+    }
+}
