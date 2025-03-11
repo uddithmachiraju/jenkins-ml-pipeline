@@ -18,17 +18,26 @@ pipeline {
         }
         stage("Data Preprocessing") {
             steps {
-                sh 'python3 scripts/preprocess.py'
+                sh '''
+                    . venv/bin/activate
+                    python3 scripts/preprocess.py
+                '''
             }
         }
         stage("Training the model") {
             steps {
-                sh 'python3 scripts/train.py'
+                sh '''
+                    . venv/bin/activate
+                    python3 scripts/train.py
+                '''
             }
         }
         stage("Select the best model") {
             steps {
-                sh 'python3 scripts/save_model.py'
+                sh '''
+                    . venv/bin/activate
+                    python3 scripts/save_model.py
+                '''
             }
         }
         stage("Model Deployment"){
